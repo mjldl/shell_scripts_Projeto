@@ -1,6 +1,7 @@
 #!/bin/bash
 
 #INICIO
+
 while true
 do
 echo -e "\n-----MENU-----"
@@ -8,8 +9,7 @@ echo -e "(1). Adicionar/Remover máquinas;"
 echo -e "(2). Fazer backup simultâneo;"
 echo -e "(3). Listar backups;"
 echo -e "(4). Verificar log"
-echo -e "(5). Manter os backups mais recentes;"
-echo -e "(6). Sair;"
+echo -e "(5). Sair;"
 echo -e "\n"
 read -p "Digite uma opção: " option
 case $option in
@@ -53,18 +53,12 @@ case $option in
 		cat log.txt
 		echo -e "\n"
 		;;
+
 	5)
-                for l in file.txt
-                do
-                        read ipv4 directory username password destiny <<< $(cat file.txt | tr ':' ' ')
-                        #ls $destiny | grep "$ipv4" |find $destiny ! -mmin -1 | xargs rm f 
-                        echo -e "\n"
-                done
-		;;
-	6)
 		break
 		;;
 	*)
 esac
 done
+
 #FIM
