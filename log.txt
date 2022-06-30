@@ -1,0 +1,74 @@
+
+-----MENU-----
+(1). Adicionar/Remover máquinas;
+(2). Fazer backup simultâneo;
+(3). Listar backups;
+(4). Verificar log
+(5). Manter os backups mais recentes;
+(6). Sair;
+
+
+Listando todos os backups...
+192.168.1.20~22521.tar.gz
+192.168.1.20~26291.tar.gz
+
+
+
+
+
+-----MENU-----
+(1). Adicionar/Remover máquinas;
+(2). Fazer backup simultâneo;
+(3). Listar backups;
+(4). Verificar log
+(5). Manter os backups mais recentes;
+(6). Sair;
+
+
+
+Executando backup...
+Backup simultâneo finalizado!
+
+
+*******************************
+
+
+-----MENU-----
+(1). Adicionar/Remover máquinas;
+(2). Fazer backup simultâneo;
+(3). Listar backups;
+(4). Verificar log
+(5). Manter os backups mais recentes;
+(6). Sair;
+
+
+Listando todos os backups...
+192.168.1.20~22521.tar.gz
+192.168.1.20~26291.tar.gz
+192.168.1.20~32596.tar.gz
+
+
+
+
+
+-----MENU-----
+(1). Adicionar/Remover máquinas;
+(2). Fazer backup simultâneo;
+(3). Listar backups;
+(4). Verificar log
+(5). Manter os backups mais recentes;
+(6). Sair;
+
+
+
+
+
+-----MENU-----
+(1). Adicionar/Remover máquinas;
+(2). Fazer backup simultâneo;
+(3). Listar backups;
+(4). Verificar log
+(5). Manter os backups mais recentes;
+(6). Sair;
+
+
