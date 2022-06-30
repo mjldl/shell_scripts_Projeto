@@ -1,0 +1,90 @@
+#!/bin/bash
+
+MENU () {
+	echo -e "\n************ MENU *************\n"
+	echo -e "(1). Adicionar/Remover máquinas;"
+	echo -e "(2). Fazer backup simultâneo (aut por chaves);"
+	echo -e "(3). Listar backups;"
+	echo -e "(4). Verificar log"
+	echo -e "(5). Backup DIFF;"
+	echo -e "(6). Espaço em disco ocupado pelos Backups;"
+	echo -e "(7). Sair;"
+	echo -e "\n"
+return 0
+}
+
+ADDREM()
+{
+echo -e "\nAdicione uma nova linha no formato das anteriores ou remova alguma...\n "
+sleep 1
+read -p "Pressione <Enter> para continuar com a ação: " press
+nano conf_file.txt
+return 0
+}
+
+BCKP()
+{
+tempo=$(date +'%d-%m-%Y~%T')
+for l in conf_file.txt
+do
+	read ipv4 directory username password destiny <<< $(cat conf_file.txt | tr ':' ' ')
+#	ssh-copy-id $username@$ipv4 (desabilitar para autenticação por chaves)
+	shpass -p "$password" scp -r $username@$ipv4:$directory $destiny$ipv4~$tempo
+	sleep 1
+	echo -e "\nExecutando backup..."
+	lszao=$(ls $destiny | ls -1 -d */ | grep "$ipv4")
+	for i in $lszao
+	do
+		tar -cf $ipv4~$RANDOM.tar.gz $destiny$lszao
+		rm -r $destiny$lszao
+	done
+done
+echo -e "Backup simultâneo finalizado!\n"
+sleep 1
+echo -e "\n*******************************\n"
+return 0
+}
+
+
+LIST()
+{
+echo -e "Listando todos os backups com base nos endereços IPv4..."
+sleep 1
+for l in conf_file.txt
+do
+	read ipv4 directory username password destiny <<< $(cat conf_file.txt | tr ':' ' ')
+	ls $destiny | grep "$ipv4"
+	echo -e "\n$destiny\n"
+done
+return 0
+}
+
+LOG()
+{
+echo -e "Listando log: \n"
+cat log.txt
+echo -e "\n"
+return 0
+}
+
+DIFF()
+{
+echo -e	"\nComparação de Backups...\n"
+echo -e "Digite os arquivos TAR.GZ com base nos seus caminhos absolutos! (Lista acima)"
+read -p "Arquivo 1: " a
+read -p "Arquivo 2: " b
+tar --diff a b
+return 0
+}
+
+MEMORIA()
+{
+for l in conf_file.txt
+do
+	read ipv4 directory username password destiny <<< $(cat conf_file.txt | tr ':' ' ')
+	echo -e "Espaço ocupado em KiloByte (KB) pelos backups: " 
+	sleep 1
+	echo -e "$destiny\n"
+	du -hsk $destiny
+	echo -e "\n"
+}
